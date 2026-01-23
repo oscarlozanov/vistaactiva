@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vista Activa Business SAS · Contacto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    :root {
+      --azul-profundo: #004A8F;
+      --azul-medio:    #2C7BB6;
+      --verde-vivo:    #66C2A5;
+      --verde-intenso: #3FAE2A;
+      --amarillo-sol:  #F9B233;
+      --gris-suave:    #e5e7eb;
+      --fondo-claro:   #f5f7fa;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 4px solid var(--verde-intenso);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 110px;
+      width: auto;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+      color: var(--azul-profundo);
+    }
+
+    .logo-text strong {
+      font-size: 1.05rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--azul-profundo);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(102, 194, 165, 0.12);
+      color: var(--azul-profundo);
+      transform: translateY(-1px);
+    }
+
+    nav a.btn-cta {
+      background: var(--verde-vivo);
+      color: #ffffff;
+      padding: 7px 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    nav a.btn-cta:hover {
+      background: var(--verde-intenso);
+      color: #ffffff;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    /* LAYOUT CONTACTO */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .logo img {
+        height: 90px;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 20px 16px 32px;
+      }
+
+      .logo img {
+        height: 80px;
+      }
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--azul-profundo);
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    /* FORMULARIO */
+    .contact-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+      border: 1px solid #e5e7eb;
+    }
+
+    .contact-card h2 {
+      font-size: 1.1rem;
+      color: var(--azul-profundo);
+      margin-bottom: 4px;
+    }
+
+    .contact-card p {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 12px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #4b5563;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: #ffffff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--verde-vivo);
+      box-shadow: 0 0 0 2px rgba(102, 194, 165, 0.25);
+      background: #f9fafb;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn-primary {
+      margin-top: 8px;
+      background: var(--verde-vivo);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--verde-intenso);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    /* COLUMNA INFORMACIÓN */
+    .info-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+      font-size: 0.85rem;
+      color: #374151;
+    }
+
+    .info-card h3 {
+      font-size: 1rem;
+      color: var(--azul-profundo);
+      margin-bottom: 6px;
+    }
+
+    .info-group {
+      margin-top: 8px;
+    }
+
+    .info-group strong {
+      font-size: 0.85rem;
+      color: #111827;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-group p {
+      margin: 0;
+      font-size: 0.83rem;
+      color: #4b5563;
+    }
+
+    .info-list {
+      margin-top: 8px;
+      padding-left: 16px;
+    }
+
+    .info-list li {
+      margin-bottom: 4px;
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 18px 20px;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+      background: #ffffff;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <img src="logo.png" alt="Vista Activa Business SAS">
+        <div class="logo-text">
+          <strong>Vista Activa Business SAS</strong>
+          <span>Consultoría en salud mental y SG‑SST</span>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="colegios.html">Línea Educación</a>
+        <a href="empresas.html">Línea Empresarial</a>
+        <a href="sst.html">Línea SG-SST</a>
+        <a href="contacto.html" class="btn-cta">Agenda una llamada</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h1 class="section-title">Contacto</h1>
+      <p class="section-subtitle">
+        Cuéntanos brevemente la situación de tu colegio o empresa y te contactamos para una llamada inicial.
+      </p>
+
+      <div class="contact-layout">
+        <!-- FORMULARIO -->
+        <div class="contact-card">
+          <h2>Agendar una llamada inicial</h2>
+          <p>Completa este formulario y recibirás respuesta en máximo 24 horas hábiles.</p>
+
+          <!-- Nota: para que funcione como envío real, luego puedes conectar con Formspree u otro servicio -->
+          <form>
+            <div class="form-row">
+              <div>
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div>
+              <div>
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="tipo-organizacion">Tipo de organización</label>
+                <select id="tipo-organizacion" name="tipo-organizacion">
+                  <option value="">Selecciona una opción</option>
+                  <option value="colegio">Colegio</option>
+                  <option value="empresa">Empresa</option>
+                  <option value="otra">Otra</option>
+                </select>
+              </div>
+              <div>
+                <label for="telefono">Teléfono / WhatsApp</label>
+                <input type="tel" id="telefono" name="telefono">
+              </div>
+            </div>
+
+            <div>
+              <label for="tema">¿Sobre qué tema quieres hablar?</label>
+              <select id="tema" name="tema">
+                <option value="">Selecciona una opción</option>
+                <option value="educacion">Línea Educación (colegios)</option>
+                <option value="empresarial">Línea Empresarial</option>
+                <option value="sst">Línea SG‑SST</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mensaje">Cuéntanos brevemente tu necesidad</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Ejemplo: Somos un colegio que necesita actualizar el PEI y fortalecer la convivencia..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+
+        <!-- INFORMACIÓN DE CONTACTO -->
+        <aside class="info-card">
+          <h3>Información para contacto</h3>
+          <div class="info-group">
+            <strong>¿Quién suele escribirnos?</strong>
+            <p>Rectores, coordinadores, orientadores escolares y jefes de talento humano.</p>
+          </div>
+
+          <div class="info-group">
+            <strong>¿Qué puedes esperar?</strong>
+            <ul class="info-list">
+              <li>Un correo o mensaje de respuesta en menos de 24 horas hábiles.</li>
+              <li>Una llamada corta para entender tu contexto.</li>
+              <li>Una propuesta inicial ajustada a tu realidad.</li>
+            </ul>
+          </div>
+
+          <div class="info-group">
+            <strong>Datos de contacto directo</strong>
+            <p>
+              Teléfonos: <br>
+              +57 316 279 3920 <br>
+              +57 310 506 3155
+            </p>
+            <p style="margin-top:6px;">
+              Correo electrónico: <br>
+              <a href="mailto:vistaactivabusiness@gmail.com">vistaactivabusiness@gmail.com</a>
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Vista Activa Business SAS · Consultoría integral en salud mental y SG‑SST.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vista Activa Business SAS · Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    :root {
+      --azul-profundo: #004A8F;
+      --azul-medio:    #2C7BB6;
+      --verde-vivo:    #66C2A5;
+      --verde-intenso: #3FAE2A;
+      --amarillo-sol:  #F9B233;
+      --gris-suave:    #e5e7eb;
+      --fondo-claro:   #f5f7fa;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 4px solid var(--verde-intenso);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 110px;
+      width: auto;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+      color: var(--azul-profundo);
+    }
+
+    .logo-text strong {
+      font-size: 1.05rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--azul-profundo);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(102, 194, 165, 0.12);
+      color: var(--azul-profundo);
+      transform: translateY(-1px);
+    }
+
+    nav a.btn-cta {
+      background: var(--verde-vivo);
+      color: #ffffff;
+      padding: 7px 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    nav a.btn-cta:hover {
+      background: var(--verde-intenso);
+      color: #ffffff;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    /* HERO PRINCIPAL */
+    .hero {
+      background: radial-gradient(circle at top left, rgba(249, 178, 51, 0.18), transparent 55%),
+                  linear-gradient(135deg, var(--azul-profundo), var(--azul-medio));
+      border-radius: 20px;
+      padding: 28px 24px;
+      color: #ffffff;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at bottom right, rgba(63, 174, 42, 0.18), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-left,
+    .hero-right {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 14px;
+      color: #f9fafb;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.28);
+    }
+
+    .hero-tag span {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--verde-vivo);
+      box-shadow: 0 0 0 4px rgba(102, 194, 165, 0.35);
+    }
+
+    .hero h1 {
+      font-size: 1.9rem;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .hero h1 span {
+      color: var(--verde-vivo);
+    }
+
+    .hero-context {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.94rem;
+      max-width: 520px;
+      margin-bottom: 18px;
+      color: #e5edf8;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .btn-primary {
+      background: var(--verde-vivo);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--verde-intenso);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .hero-note span {
+      font-weight: 600;
+    }
+
+    .hero-right-card {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      color: #1f2933;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(102, 194, 165, 0.15);
+      color: var(--azul-profundo);
+      border: 1px solid rgba(102, 194, 165, 0.6);
+      font-weight: 600;
+    }
+
+    .hero-metric-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.8rem;
+    }
+
+    .hero-metric {
+      flex: 1;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 8px 10px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .hero-metric strong {
+      font-size: 1rem;
+      color: var(--azul-profundo);
+    }
+
+    .hero-metric small {
+      display: block;
+      font-size: 0.72rem;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .hero-divider {
+      border-top: 1px dashed #d1d5db;
+      margin: 4px 0 2px;
+    }
+
+    .hero-client-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: #4b5563;
+    }
+
+    .hero-client-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hero-client-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--verde-intenso);
+    }
+
+    section {
+      margin-top: 32px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      color: var(--azul-profundo);
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+      border-color: rgba(102, 194, 165, 0.8);
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(44, 123, 182, 0.08);
+      color: var(--azul-profundo);
+      align-self: flex-start;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      color: var(--azul-profundo);
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+
+    .card-footer {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .card-link {
+      font-size: 0.8rem;
+      color: var(--azul-medio);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .badge-soft {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(249, 178, 51, 0.12);
+      color: #92400e;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr;
+      gap: 18px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .faq-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .faq-item-title {
+      font-size: 0.9rem;
+      color: var(--azul-profundo);
+    }
+
+    .faq-toggle {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #6b7280;
+    }
+
+    .faq-item p {
+      font-size: 0.8rem;
+      color: #4b5563;
+      margin-top: 6px;
+      display: none;
+    }
+
+    .faq-item.active {
+      border-color: rgba(102, 194, 165, 0.9);
+      background: linear-gradient(135deg, #ffffff, #f0fdf9);
+    }
+
+    .faq-item.active p {
+      display: block;
+    }
+
+    .faq-aside {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--verde-vivo);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      font-size: 0.82rem;
+      color: #374151;
+    }
+
+    .faq-aside h3 {
+      font-size: 0.95rem;
+      color: var(--azul-profundo);
+      margin-bottom: 6px;
+    }
+
+    .faq-aside ul {
+      margin-left: 16px;
+      margin-top: 4px;
+    }
+
+    .faq-aside li {
+      margin-bottom: 4px;
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 18px 20px;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+      background: #ffffff;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .logo img {
+        height: 90px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 20px 16px;
+      }
+
+      .header-inner {
+        padding: 10px 16px;
+      }
+
+      main {
+        padding: 20px 16px 32px;
+      }
+
+      .logo img {
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <img src="logo.png" alt="Vista Activa Business SAS">
+        <div class="logo-text">
+          <strong>Vista Activa Business SAS</strong>
+          <span>Consultoría en salud mental y SG‑SST</span>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="colegios.html">Línea Educación</a>
+        <a href="empresas.html">Línea Empresarial</a>
+        <a href="sst.html">Línea SG-SST</a>
+        <a href="contacto.html" class="btn-cta">Agenda una llamada</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO PRINCIPAL -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span></span>
+          <div>De la norma al impacto real</div>
+        </div>
+        <div class="hero-context">
+          Para colegios, empresas y organizaciones que quieren cuidar la salud mental sin perder de vista la normatividad vigente.
+        </div>
+        <h1>
+          Salud mental y SG‑SST que se convierten en <span>resultados</span> para tu institución.
+        </h1>
+        <p class="hero-subtitle">
+          Acompañamiento para pasar del cumplimiento mínimo a estrategias vivas que cuidan a las personas, reducen riesgos y mejoran indicadores como clima, ausentismo y permanencia.
+        </p>
+
+        <div class="hero-highlights">
+          <div class="pill">Diagnóstico inicial de colegios y empresas</div>
+          <div class="pill">Programas de bienestar emocional sostenidos</div>
+          <div class="pill">SG‑SST alineado con la realidad del equipo</div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="window.location.href='contacto.html'">
+            Agendar llamada inicial
+          </button>
+          <button class="btn-secondary" onclick="window.location.href='servicios.html'">
+            Explorar servicios
+          </button>
+        </div>
+
+        <div class="hero-note">
+          <span>En menos de 24 horas hábiles</span> recibirás propuesta de horarios para una llamada corta, sin costo ni compromiso.
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-right-card">
+          <div class="hero-right-header">
+            <div>
+              <strong style="font-size:0.95rem; color:var(--azul-profundo);">
+                Visión activa de tu organización
+              </strong>
+              <div style="font-size:0.78rem; color:#6b7280;">
+                Una mirada conjunta a salud mental, clima y cumplimiento normativo.
+              </div>
+            </div>
+            <span class="badge">Acompañamos tu proceso</span>
+          </div>
+
+          <div class="hero-metric-row">
+            <div class="hero-metric">
+              <strong>Personas</strong>
+              <small>Leemos cómo se sienten estudiantes, docentes y colaboradores, más allá de los indicadores.</small>
+            </div>
+            <div class="hero-metric">
+              <strong>Norma</strong>
+              <small>Integramos SG‑SST, salud mental y convivencia para que no queden en planes separados.</small>
+            </div>
+          </div>
+
+          <div class="hero-divider"></div>
+
+          <div class="hero-client-row">
+            <span>
+              <span class="hero-client-dot"></span>
+              Procesos a la medida para colegios y empresas.
+            </span>
+            <span style="font-size:0.75rem; color:#9ca3af;">
+              Modalidad virtual, presencial o combinada según tu contexto.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LÍNEAS PRINCIPALES -->
+    <section>
+      <h2 class="section-title">Líneas de consultoría</h2>
+      <p class="section-subtitle">
+        Tres líneas que se conectan entre sí para que lo que se diseña en documentos se vea en el día a día de tu organización.
+      </p>
+
+      <div class="cards-grid">
+        <article class="card">
+          <span class="card-tag">Colegios</span>
+          <h3>Línea Educación</h3>
+          <p>
+            Acompañamiento a instituciones educativas que quieren fortalecer la salud mental de estudiantes, docentes y familias,
+            articulando PEI, convivencia y proyectos pedagógicos.
+          </p>
+          <div class="card-footer">
+            <a href="colegios.html" class="card-link">Ver detalles</a>
+            <span class="badge-soft">Ambientes protectores</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="card-tag">Empresas</span>
+          <h3>Línea Empresarial</h3>
+          <p>
+            Procesos para áreas de talento humano y liderazgo que buscan cuidar el bienestar emocional, mejorar el clima y
+            cumplir la Ley 2460 sin perder el sentido humano.
+          </p>
+          <div class="card-footer">
+            <a href="empresas.html" class="card-link">Ver detalles</a>
+            <span class="badge-soft">Talento humano</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="card-tag">Normatividad</span>
+          <h3>Línea SG‑SST</h3>
+          <p>
+            Acompañamiento técnico para construir, revisar o ajustar el SG‑SST, integrando riesgo psicosocial y salud mental
+            como parte central del sistema, no como anexos.
+          </p>
+          <div class="card-footer">
+            <a href="sst.html" class="card-link">Ver detalles</a>
+            <span class="badge-soft">De la norma a la acción</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section>
+      <h2 class="section-title">Preguntas que suelen hacernos</h2>
+      <p class="section-subtitle">
+        Algunas de las dudas más comunes al iniciar procesos de salud mental, convivencia escolar y SG‑SST en colegios y empresas.
+      </p>
+
+      <div class="faq-grid">
+        <div class="faq-list">
+          <div class="faq-item active">
+            <div class="faq-item-header">
+              <div class="faq-item-title">
+                ¿Por dónde empezamos si nunca hemos hecho un proceso estructurado?
+              </div>
+              <div class="faq-toggle">−</div>
+            </div>
+            <p>
+              Se inicia con una lectura sencilla de tu situación actual: documentos clave, equipos y principales preocupaciones.
+              Con eso se propone una ruta por fases, viable para tus recursos y tiempos.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-title">
+                ¿Cómo se conecta la salud mental con la norma de SG‑SST?
+              </div>
+              <div class="faq-toggle">+</div>
+            </div>
+            <p>
+              Los riesgos psicosociales, el clima y las acciones de bienestar se integran a la matriz de peligros, al plan anual
+              y a los comités, para que lo humano y lo normativo apunten al mismo objetivo.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-title">
+                ¿Trabajan con proyectos por fases o solo intervenciones puntuales?
+              </div>
+              <div class="faq-toggle">+</div>
+            </div>
+            <p>
+              Se pueden desarrollar procesos puntuales (talleres, diagnósticos específicos) o proyectos por fases.
+              La decisión se toma juntos, según el momento de tu organización y el presupuesto disponible.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-title">
+                ¿Qué pasa después de un taller o capacitación?
+              </div>
+              <div class="faq-toggle">+</div>
+            </div>
+            <p>
+              Cada espacio incluye recomendaciones de seguimiento y acciones concretas para el día a día,
+              de modo que no se quede solo en una actividad aislada.
+            </p>
+          </div>
+        </div>
+
+        <aside class="faq-aside">
+          <h3>Próximo paso: una llamada corta</h3>
+          <p>
+            En una conversación de 20 a 30 minutos se puede aclarar la necesidad principal, priorizar temas
+            y definir un primer paso realista para tu colegio o empresa.
+          </p>
+          <ul>
+            <li>Revisar brevemente el contexto de tu organización.</li>
+            <li>Explorar qué línea de trabajo tendría más impacto.</li>
+            <li>Acordar el siguiente paso y tiempos tentativos.</li>
+          </ul>
+          <button class="btn-primary" style="margin-top:10px; padding:7px 14px; font-size:0.85rem;"
+                  onclick="window.location.href='contacto.html'">
+            Agendar llamada inicial
+          </button>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Vista Activa Business SAS · Consultoría integral en salud mental y SG‑SST.
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        var isActive = this.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(function (other) {
+          other.classList.remove('active');
+          var toggle = other.querySelector('.faq-toggle');
+          if (toggle) toggle.textContent = '+';
+        });
+        if (!isActive) {
+          this.classList.add('active');
+          var toggle = this.querySelector('.faq-toggle');
+          if (toggle) toggle.textContent = '−';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

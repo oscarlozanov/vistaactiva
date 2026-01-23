@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vista Activa Business SAS · Línea SG‑SST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    :root {
+      --azul-profundo: #004A8F;
+      --azul-medio:    #2C7BB6;
+      --verde-vivo:    #66C2A5;
+      --verde-intenso: #3FAE2A;
+      --amarillo-sol:  #F9B233;
+      --gris-suave:    #e5e7eb;
+      --fondo-claro:   #f5f7fa;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 4px solid var(--verde-intenso);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 110px;
+      width: auto;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+      color: var(--azul-profundo);
+    }
+
+    .logo-text strong {
+      font-size: 1.05rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--azul-profundo);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(102, 194, 165, 0.12);
+      color: var(--azul-profundo);
+      transform: translateY(-1px);
+    }
+
+    nav a.btn-cta {
+      background: var(--verde-vivo);
+      color: #ffffff;
+      padding: 7px 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    nav a.btn-cta:hover {
+      background: var(--verde-intenso);
+      color: #ffffff;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    /* HERO SG-SST */
+    .hero-sst {
+      background: linear-gradient(135deg, var(--azul-profundo), var(--verde-intenso));
+      border-radius: 20px;
+      padding: 24px 24px 22px;
+      color: #ffffff;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-sst::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(249, 178, 51, 0.25), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-sst-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .hero-sst-main {
+      max-width: 620px;
+    }
+
+    .hero-sst h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-sst h1 span {
+      color: #fef9c3;
+    }
+
+    .hero-sst p {
+      font-size: 0.95rem;
+      color: #e5edf8;
+      margin-bottom: 14px;
+    }
+
+    .hero-sst-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .hero-chip {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-sst-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: var(--verde-vivo);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--verde-intenso);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-sst-side {
+      background: rgba(255, 255, 255, 0.10);
+      border-radius: 16px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      max-width: 280px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero-sst-side strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* SECCIONES GENERALES */
+    section {
+      margin-top: 28px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      color: var(--azul-profundo);
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    /* BLOQUES SG-SST */
+    .bloques-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .bloque {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .bloque-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bloque h3 {
+      font-size: 1rem;
+      color: var(--azul-profundo);
+    }
+
+    .bloque-tag {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(44, 123, 182, 0.08);
+      color: var(--azul-profundo);
+    }
+
+    .bloque p {
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+
+    .bloque ul {
+      margin-left: 16px;
+      font-size: 0.83rem;
+      color: #4b5563;
+    }
+
+    .bloque ul li {
+      margin-bottom: 4px;
+    }
+
+    .bloque-footer {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .badge-soft {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(249, 178, 51, 0.12);
+      color: #92400e;
+    }
+
+    /* TARJETAS SG-SST */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 6px 16px rgba(46, 62, 97, 0.12);
+    }
+
+    .card h4 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #2e3e61;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #6a8189;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #d5f7f5;
+      color: #057672;
+      margin-bottom: 6px;
+    }
+
+    /* FAQ SG-SST */
+    .faq-item {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 6px 16px rgba(46, 62, 97, 0.12);
+      cursor: pointer;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      color: #2e3e61;
+      margin-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item .toggle {
+      font-size: 1.2rem;
+      color: #20c1bf;
+      font-weight: bold;
+    }
+
+    .faq-item p {
+      display: none;
+      color: #6a8189;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    .faq-item.active p {
+      display: block;
+    }
+
+    /* CTA FINAL */
+    .cta-final {
+      margin-top: 26px;
+      background: linear-gradient(135deg, #ffffff, #f0fdf9);
+      border-radius: 18px;
+      padding: 16px 16px 18px;
+      border: 1px solid rgba(102, 194, 165, 0.6);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+    }
+
+    .cta-final-main {
+      max-width: 640px;
+    }
+
+    .cta-final strong {
+      color: var(--azul-profundo);
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 18px 20px;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+      background: #ffffff;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .logo img {
+        height: 90px;
+      }
+
+      .bloques-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 20px 16px 32px;
+      }
+
+      .logo img {
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <img src="logo.png" alt="Vista Activa Business SAS">
+        <div class="logo-text">
+          <strong>Vista Activa Business SAS</strong>
+          <span>Consultoría en salud mental y SG‑SST</span>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="colegios.html">Línea Educación</a>
+        <a href="empresas.html">Línea Empresarial</a>
+        <a href="sst.html">Línea SG-SST</a>
+        <a href="contacto.html" class="btn-cta">Agenda una llamada</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SG-SST -->
+    <section class="hero-sst">
+      <div class="hero-sst-inner">
+        <div class="hero-sst-main">
+          <h1>Línea SG‑SST: integrar la norma con la realidad de tu organización<span>.</span></h1>
+          <p>
+            Acompañamos a organizaciones que necesitan fortalecer su sistema de gestión de seguridad y salud en el trabajo,
+            especialmente en los componentes psicosociales y de salud mental.
+          </p>
+          <div class="hero-sst-tags">
+            <span class="hero-chip">SG‑SST</span>
+            <span class="hero-chip">Riesgo psicosocial</span>
+            <span class="hero-chip">Salud mental laboral</span>
+          </div>
+          <div class="hero-sst-actions">
+            <button class="btn-primary" onclick="window.location.href='contacto.html'">
+              Quiero hablar sobre SG‑SST
+            </button>
+            <button class="btn-secondary" onclick="window.location.href='#servicios-sst'">
+              Ver servicios técnicos
+            </button>
+          </div>
+        </div>
+        <div class="hero-sst-side">
+          <strong>¿Qué trabajamos en esta línea?</strong>
+          <ul>
+            <li>Lectura del estado actual del SG‑SST.</li>
+            <li>Articulación con salud mental y riesgo psicosocial.</li>
+            <li>Acciones concretas y posibles indicadores.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUES SG-SST -->
+    <section>
+      <h2 class="section-title">¿Cómo acompañamos tu SG‑SST?</h2>
+      <p class="section-subtitle">
+        Acompañamos tus procesos de seguridad y salud en el trabajo con un enfoque humano y realista.
+      </p>
+
+      <div class="bloques-grid">
+        <article class="bloque">
+          <div class="bloque-header">
+            <h3>Revisión del sistema de gestión</h3>
+            <span class="bloque-tag">Estado actual</span>
+          </div>
+          <p>
+            Lectura inicial del sistema de gestión de seguridad y salud en el trabajo para identificar
+            fortalezas, vacíos y oportunidades de mejora.
+          </p>
+          <ul>
+            <li>Revisión de documentos clave del SG‑SST.</li>
+            <li>Conversaciones con los responsables del sistema.</li>
+            <li>Recomendaciones priorizadas para avanzar.</li>
+          </ul>
+          <div class="bloque-footer">
+            <span>Punto de partida para ajustes.</span>
+            <span class="badge-soft">Diagnóstico</span>
+          </div>
+        </article>
+
+        <article class="bloque">
+          <div class="bloque-header">
+            <h3>Integración de salud mental al SG‑SST</h3>
+            <span class="bloque-tag">Articulación</span>
+          </div>
+          <p>
+            Acompañamiento para que la salud mental y el riesgo psicosocial no queden por fuera del sistema de gestión,
+            sino integrados en sus programas y planes.
+          </p>
+          <ul>
+            <li>Revisión de programas y procedimientos existentes.</li>
+            <li>Propuestas de integración con salud mental.</li>
+            <li>Acciones en conjunto con talento humano.</li>
+          </ul>
+          <div class="bloque-footer">
+            <span>Enfoque integral.</span>
+            <span class="badge-soft">SG‑SST y salud mental</span>
+          </div>
+        </article>
+
+        <article class="bloque">
+          <div class="bloque-header">
+            <h3>Acompañamiento en planes de mejora</h3>
+            <span class="bloque-tag">Seguimiento</span>
+          </div>
+          <p>
+            Apoyo para avanzar en los planes de mejora definidos en auditorías o revisiones internas,
+            con foco en acciones posibles y medibles.
+          </p>
+          <ul>
+            <li>Definición de responsables y tiempos.</li>
+            <li>Ajustes periódicos según avances.</li>
+            <li>Orientación en la documentación requerida.</li>
+          </ul>
+          <div class="bloque-footer">
+            <span>Trabajo paso a paso.</span>
+            <span class="badge-soft">Implementación</span>
+          </div>
+        </article>
+
+        <article class="bloque">
+          <div class="bloque-header">
+            <h3>Formación y sensibilización en SG‑SST</h3>
+            <span class="bloque-tag">Formación</span>
+          </div>
+          <p>
+            Espacios para fortalecer el conocimiento y la apropiación del sistema de gestión en equipos directivos,
+            comités y trabajadores.
+          </p>
+          <ul>
+            <li>Sesiones sobre principios del SG‑SST.</li>
+            <li>Articulación con salud mental y riesgo psicosocial.</li>
+            <li>Material de apoyo para la organización.</li>
+          </ul>
+          <div class="bloque-footer">
+            <span>Adaptado al tipo de organización.</span>
+            <span class="badge-soft">Cultura de cuidado</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTAFOLIO TÉCNICO SG-SST -->
+    <section id="servicios-sst" class="section">
+      <h2 class="section-title">Portafolio técnico en SG‑SST</h2>
+      <p class="section-subtitle">
+        Servicios diseñados para fortalecer el SG‑SST, cumplir estándares mínimos y reducir riesgos psicosociales en tu organización.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="pill">Diagnóstico</div>
+          <h4>Evaluación de estándares mínimos</h4>
+          <p>Revisión del cumplimiento de estándares mínimos del Ministerio de Trabajo, identificando brechas, riesgos y prioridades de acción.</p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Implementación</div>
+          <h4>Elaboración del SG‑SST</h4>
+          <p>Diseño o actualización integral del SG‑SST, incorporando protocolos, plan anual y seguimiento.</p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Riesgo psicosocial</div>
+          <h4>Evaluación de batería psicosocial</h4>
+          <p>Aplicación e interpretación de baterías de riesgo psicosocial y diseño de planes de intervención con enfoque en factores de riesgo y protectores.</p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Ergonomía y carga</div>
+          <h4>Análisis de puesto de trabajo</h4>
+          <p>Evaluación de puestos desde la perspectiva de carga física y mental, con recomendaciones concretas de mejora.</p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Auditoría</div>
+          <h4>Auditoría al SG‑SST</h4>
+          <p>Auditorías internas para verificar el cumplimiento del sistema, documentar hallazgos y proponer acciones de mejora.</p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Formación</div>
+          <h4>Capacitaciones del plan anual</h4>
+          <p>Diseño y ejecución de capacitaciones del plan anual del SG‑SST, con contenidos en salud mental y riesgo psicosocial.</p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Integración estratégica</div>
+          <h4>Integración de salud mental al SG‑SST</h4>
+          <p>Integración del componente de salud mental a la matriz de peligros, al plan anual, al COPASST y a comités de convivencia.</p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Protocolos</div>
+          <h4>Protocolos para casos críticos</h4>
+          <p>Diseño o actualización de protocolos para atención a intento de suicidio, violencia intrafamiliar, acoso y otros eventos críticos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ SG-SST -->
+    <section class="section">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <p class="section-subtitle">Resuelve tus dudas sobre servicios SG‑SST.</p>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 12px;">
+        <div class="faq-item">
+          <h3>¿Cuáles son los estándares mínimos del Ministerio de Trabajo? <span class="toggle">+</span></h3>
+          <p>Son requisitos obligatorios que toda empresa debe cumplir en SG‑SST: política, objetivos, responsables, matriz de peligros, planes de acción, capacitación y vigilancia de la salud. Hacemos la evaluación inicial.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Qué es la batería de riesgo psicosocial? <span class="toggle">+</span></h3>
+          <p>Instrumento del Ministerio que mide factores de riesgo psicosocial en el trabajo: demandas, autonomía, apoyo, compensación, etc. Es obligatoria cada 2-3 años. La aplicamos e interpretamos.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Necesitamos auditoría al SG‑SST? ¿Con qué frecuencia? <span class="toggle">+</span></h3>
+          <p>Sí, es obligatoria. Se recomienda anual como mínimo. Nosotros realizamos auditorías internas que verifican cumplimiento, documentan hallazgos y proponen acciones de mejora.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Cómo integramos salud mental al SG‑SST? <span class="toggle">+</span></h3>
+          <p>Incorporamos en: matriz de peligros (factores psicosociales), plan anual (capacitaciones y actividades), COPASST (reuniones) y protocolos de crisis. Es una integración estratégica, no separada.</p>
+        </div>
+        <div class="faq-item">
+          <h3>¿Cuánto tiempo toma implementar un SG‑SST completo? <span class="toggle">+</span></h3>
+          <p>Depende del tamaño y complejidad. Generalmente: diagnóstico 2‑3 semanas, diseño 4‑6 semanas, implementación 2‑3 meses inicial. Luego mantenimiento continuo. Ajustamos según tu realidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+      <div class="cta-final-main">
+        <strong>¿Quieres revisar cómo está tu SG‑SST?</strong>
+        <p>
+          Podemos tener una conversación inicial para conocer el estado de tu sistema y explorar juntos
+          qué tipo de acompañamiento en SG‑SST tendría más sentido para tu organización.
+        </p>
+      </div>
+      <button class="btn-primary" onclick="window.location.href='contacto.html'">
+        Quiero agendar una llamada
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Vista Activa Business SAS · Consultoría integral en salud mental y SG‑SST.
+  </footer>
+
+  <script>
+    var items = document.querySelectorAll('.faq-item');
+    for (var i = 0; i < items.length; i++) {
+      items[i].addEventListener('click', function () {
+        this.classList.toggle('active');
+        var toggle = this.querySelector('.toggle');
+        toggle.textContent = this.classList.contains('active') ? '−' : '+';
+      });
+    }
+  </script>
+</body>
+</html>
